@@ -68,20 +68,16 @@ Quit the server with CONTROL-C.
     <script>
         function fn_enter_room()
         {
-            var obj_text_room_name = $(".text-room-name");
-
-            obj_text_room_name.keypress(function (e) {
+            $(".text-room-name").keypress(function (e) {
                 if (e.keyCode === 13) {
-                    var room_name = obj_text_room_name.val();
-                    location.pathname = '/chat/' + room_name;
+                    console.log(this.value)
+                    location.pathname = '/chat/' + this.value;
                 }
             })
         }
 
         $(document).ready(function () {
-
             fn_enter_room();
-
         });
     </script>
 
@@ -89,7 +85,7 @@ Quit the server with CONTROL-C.
 <body>
 
 <label>
-    <input type="text" class="text-room-name">
+    <input type="text" class="text-room-name" value="">
 </label>
 
 </body>

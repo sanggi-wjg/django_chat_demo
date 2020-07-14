@@ -20,6 +20,7 @@ Env versions
 | 3.Setup Django | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/3_setup_django.md |
 | 4.Django app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/4_django_app.md |
 | 5.Setup chat app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/5_setup_chat_app.md |
+| 6.chat app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/6_chat_app.md |
 
 
 

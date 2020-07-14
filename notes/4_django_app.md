@@ -69,13 +69,3 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse('Hello Django')
 ```
-
-## Launching Django app!
-```
-$ python manage.py runserver 0:8000
-```
-If you can't connect, you have to open port on server.
-```
-$ firewall-cmd --permanent --zone=public --add-port=8000/tcp
-$ firewall-cmd --reload
-```

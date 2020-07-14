@@ -73,8 +73,61 @@ MariaDB [backend]> show tables;
 # exit
 ```
 
-### Open server port
+#### Open server port
 ```
 $ firewall-cmd --permanent --zone=public --add-port=8000/tcp
 $ firewall-cmd --reload
+```
+
+## Static
+#### chat_demo/chat_demo/settings.py
+``` 
+TEMPLATES = [
+    {
+        'BACKEND' : 'django.template.backends.django.DjangoTemplates',
+        'DIRS'    : [
+            os.path.join(BASE_DIR, "static"),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS' : {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+```
+then
+``` 
+$ python manage.py collectstatic
+```
+
+#### chat_demo/chat_demo/urls.py
+```
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    path('chat', include('chat.urls')),
+]
+
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+```
+
+
+## Start Django!
+```
+$ python manage.py runserver 0:8000
 ```

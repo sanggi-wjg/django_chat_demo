@@ -3,11 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat index</title>
+
+    {% load static %}
+    <link rel="icon" href="{% static 'comm/ozoz.ico' %}">
+
+    <script src={% static 'comm/jquery_3.4.1.js' %}></script>
+
+    <script>
+        function fn_enter_room()
+        {
+            var obj_text_room_name = $(".text-room-name");
+
+            obj_text_room_name.keypress(function (e) {
+                if (e.keyCode === 13) {
+                    var room_name = obj_text_room_name.val();
+                    location.pathname = '/chat/' + room_name;
+                }
+            })
+        }
+
+        $(document).ready(function () {
+
+            fn_enter_room();
+
+        });
+    </script>
+
 </head>
 <body>
 
 <label>
-    <input type="text">
+    <input type="text" class="text-room-name">
 </label>
 
 </body>

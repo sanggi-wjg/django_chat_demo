@@ -11,7 +11,6 @@ Env versions
 | redis | 6.0 |
 
 #
-
 ### Notes
 | Name | Ref |
 | ------ | ------ |
@@ -26,6 +25,6 @@ Env versions
 
 #
 #### 참고
-https://channels.readthedocs.io/
-https://victorydntmd.tistory.com/262?category=703021
+* https://channels.readthedocs.io/
+* https://victorydntmd.tistory.com/262?category=703021
 

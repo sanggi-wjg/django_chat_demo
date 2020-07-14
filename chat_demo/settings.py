@@ -25,7 +25,9 @@ SECRET_KEY = 'k2x6awfa)n$y(egtwm9s@ekm+i(o5!4iepms%xsqu4zmfr@&ks'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.10.213',
+]
 
 
 # Application definition
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +79,12 @@ WSGI_APPLICATION = 'chat_demo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE'  : 'django.db.backends.mysql',
+        'NAME'    : 'backend',
+        'USER'    : 'root',
+        'HOST'    : '127.0.0.1',
+        'PASSWORD': 'wpdlwl',
+        'PORT'    : '33061',
     }
 }
 

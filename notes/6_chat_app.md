@@ -1,6 +1,9 @@
 # Chat app
 
 ### static/chat/room.html
+
+web socket url 중 '/ws/' 가 있는데 이는 HTTP 요청과 web socket 의 요청을 구분하기 위한 좋은 방법.
+HTTP 요청은 uWSGI, WebSocket 요청은 ASGI 로 처리.
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -96,5 +99,4 @@ urlpatterns = [
     path('', views.index),
     path('<str:room_name>', views.room),
 ]
-
 ```

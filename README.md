@@ -10,9 +10,9 @@ Env versions
 | MariaDB | 10.4 |
 | redis | 6.0 |
 
+#
 
-
-## Notes
+### Notes
 | Name | Ref |
 | ------ | ------ |
 | 1.Setup Python | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/1_setup_python.md |
@@ -21,6 +21,10 @@ Env versions
 | 4.Django app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/4_django_app.md |
 | 5.Setup chat app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/5_setup_chat_app.md |
 | 6.chat app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/6_chat_app.md |
+| 7.consumer | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/7_consumer.md |
 
-
+#
+#### 참고
+https://channels.readthedocs.io/
+https://victorydntmd.tistory.com/262?category=703021
 

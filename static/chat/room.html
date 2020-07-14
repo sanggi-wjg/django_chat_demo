@@ -25,7 +25,7 @@
         function fn_chat_on_close()
         {
             CHAT_SOCKET.onclose = function (e) {
-                console.error('CHAT_SOCKET is closed with error : ' + e)
+                console.error('@@ CHAT_SOCKET is closed with error');
             };
         }
 
@@ -44,7 +44,7 @@
         }
 
         $(document).ready(function () {
-            CHAT_SOCKET = new WebSocket('ws://' + location.host + '/ws/chat/' + {{ room_name_json }})
+            CHAT_SOCKET = new WebSocket('ws://' + location.host + '/ws/chat/' + {{ room_name_json }});
 
             fn_chat_on_message();
             fn_chat_on_close();
@@ -59,7 +59,7 @@
 </label><br>
 
 <label>
-    <input class="text-message" size="100">
+    <input class="text-message" size="98">
 </label>
 
 </body>

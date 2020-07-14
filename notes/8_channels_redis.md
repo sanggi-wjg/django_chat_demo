@@ -78,3 +78,54 @@ class Chat_Consumer(WebsocketConsumer):
             'message': message
         }))
 ```
+
+## sync to async
+The ChatConsumer that we have written is currently synchronous. 
+Synchronous consumers are convenient because they can call regular synchronous I/O functions such as those that access Django models without writing special code. 
+However asynchronous consumers can provide a higher level of performance since they don’t need to create additional threads when handling requests.
+```
+import json
+
+from asgiref.sync import async_to_sync
+
+from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
+
+
+class Chat_Consumer(AsyncWebsocketConsumer):
+
+    async def connect(self):
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = 'chat_{}'.format(self.room_name)
+
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
+
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            self.room_group_name,
+            self.channel_name
+        )
+
+    async def receive(self, text_data = None, bytes_data = None):
+        text_data = json.loads(text_data)
+        message = text_data.get('message')
+
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type'   : 'chat_message',
+                'message': message
+            }
+        )
+
+    async def chat_message(self, event):
+        message = event.get('message')
+
+        await  self.send(text_data = json.dumps({
+            'message': message
+        }))
+```

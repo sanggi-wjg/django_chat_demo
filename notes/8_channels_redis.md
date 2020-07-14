@@ -1,3 +1,38 @@
+# Channels redis
+
+```
+$ pip install channels_redis
+
+Installing collected packages: async-timeout, hiredis, aioredis, msgpack, channels-redis
+Successfully installed aioredis-1.3.1 async-timeout-3.0.1 channels-redis-3.0.0 hiredis-1.0.1 msgpack-1.0.0
+```
+
+#### chat_demo/settings.py
+```
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG' : {
+            'hosts': [('127.0.0.1', 63791)],
+        },
+    }
+}
+```
+
+Test
+```
+$ python3 manage.py shell
+
+>>> import channels.layers
+>>> channel_layer = channels.layers.get_channel_layer()
+>>> from asgiref.sync import async_to_sync
+>>> async_to_sync(channel_layer.send)('test_channel', {'type': 'hello'})
+>>> async_to_sync(channel_layer.receive)('test_channel')
+{'type': 'hello'}
+```
+
+#### chat/consumers.py
+```
 import json
 
 from asgiref.sync import async_to_sync
@@ -42,3 +77,4 @@ class Chat_Consumer(WebsocketConsumer):
         self.send(json.dumps({
             'message': message
         }))
+```

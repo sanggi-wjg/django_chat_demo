@@ -22,6 +22,7 @@ Env versions
 | 5.Setup chat app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/5_setup_chat_app.md |
 | 6.chat app | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/6_chat_app.md |
 | 7.consumer | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/7_consumer.md |
+| 8.channels_redis | https://github.com/sanggi-wjg/django_chat_demo/blob/master/notes/8_channels_redis.md |
 
 #
 #### 참고
